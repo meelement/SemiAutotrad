@@ -1,5 +1,4 @@
-#@title **Create User**
-#@markdown Enter Username and Password
+
 
 import os
 
@@ -21,22 +20,17 @@ os.system(f"echo '{username}:{password}' | sudo chpasswd")
 os.system("sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd")
 
 print(f"User created and configured having username `{username}` and password `{password}`")
-Creating User and Setting it up
-User created and configured having username `user` and password `root`
-#@title **RDP**
-#@markdown  It takes 4-5 minutes for installation
+
 
 import os
 import subprocess
 
-#@markdown  Visit http://remotedesktop.google.com/headless and copy the command after Authentication
 
-CRP = 'DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AX4XfWg9LJ4k7JGi8-RqdD9-_-FZp3n5fjOJa1M-h0My8gU4LiJHUVe0E7spVlGweClcDA" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)'
+CRP = 'DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AX4XfWhg6eYlp1P_5OSOMxrl7RAlr91QqkE2jC6G4fp4fnfNm2wQpJ-7hAMKsDjrb_2Raw" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)'
 
 #@markdown Enter a Pin (more or equal to 6 digits)
 Pin = 123456 #@param {type: "integer"}
 
-#@markdown Autostart Notebook in RDP
 Autostart = False #@param {type: "boolean"}
 
 
