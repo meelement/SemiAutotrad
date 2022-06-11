@@ -1,9 +1,9 @@
-
+#@title **Create User & Password**
 
 import os
 
-username = "user" #@param {type:"string"}
-password = "root" #@param {type:"string"}
+username = "colabrdp" #@param {type:"string"}
+password = "123456" #@param {type:"string"}
 
 print("Creating User and Setting it up")
 
@@ -21,17 +21,16 @@ os.system("sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd")
 
 print(f"User created and configured having username `{username}` and password `{password}`")
 
+#@markdown  It takes 4-5 minutes for installation
 
 import os
 import subprocess
 
+#@markdown  Visit <a href="http://remotedesktop.google.com/headless">Remote Desktop</a> and copy the command after Authentication
 
-CRP = 'DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AX4XfWhg6eYlp1P_5OSOMxrl7RAlr91QqkE2jC6G4fp4fnfNm2wQpJ-7hAMKsDjrb_2Raw" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)'
-
-#@markdown Enter a Pin (more or equal to 6 digits)
+CRP = 'DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AX4XfWgDB33aMjKYvrP3fOKcggGWYV0qAo-k_B0YMkaYnjopaHR4OxwmGPnFQqHelI7V-A" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)'
 Pin = 123456 #@param {type: "integer"}
-
-Autostart = False #@param {type: "boolean"}
+Autostart = True #@param {type: "boolean"}
 
 
 class CRD:
@@ -41,7 +40,7 @@ class CRD:
         self.installDesktopEnvironment()
         self.installGoogleChorme()
         self.finish(user)
-        print("\nRDP created succesfully move to https://remotedesktop.google.com/access")
+        print('\nRDP created succesfully move to <a href="https://remotedesktop.google.com/access">Remote Desktop</a> ')
 
     @staticmethod
     def installCRD():
@@ -72,7 +71,7 @@ class CRD:
         print("Finalizing")
         if Autostart:
             os.makedirs(f"/home/{user}/.config/autostart", exist_ok=True)
-            link = "https://colab.research.google.com/github/PradyumnaKrishna/Colab-Hacks/blob/master/Colab%20RDP/Colab%20RDP.ipynb"
+            link = "https://colab.research.google.com/github/miunprime/colab/blob/main/RDP_ROTG_Tools.ipynb"
             colab_autostart = """[Desktop Entry]
 Type=Application
 Name=Colab
